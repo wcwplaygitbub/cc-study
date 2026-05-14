@@ -1,4 +1,4 @@
-# Week 1 Day 3-5 学习总结
+# Week 1 Day 4-5 学习总结
 
 > 学习日期：___________  
 > 学习时长：___________  
@@ -24,11 +24,15 @@
 
 ### 工具注册机制
 
+工具定义包含 name、description、input_schema 三个关键字段。LLM 通过 description 知道什么场景用这个工具，通过 input_schema 知道怎么传参。
+
 ___
 
 
 
 ### 工具执行流程
+
+LLM 返回 tool_use 块 → 解析工具名和参数 → 权限检查 → 执行工具 → 把 tool_result 作为 user 角色消息加回消息列表 → 继续循环。
 
 ___
 
@@ -36,11 +40,15 @@ ___
 
 ### Token 预算检查
 
+每次发请求前计算消息列表总 tokens，超过 context window 的 80% 就触发 AutoCompact。
+
 ___
 
 
 
 ### 消息构建
+
+发给 LLM 的消息 = system prompt + 记忆内容 + 对话历史 + skill 上下文。工具结果作为 user 角色加回去。
 
 ___
 
@@ -58,3 +66,6 @@ ___
 
 ___
 
+### 下一步学习计划
+
+Day 6-7：Agent Loop 串联复盘 + Week 1 整体总结。

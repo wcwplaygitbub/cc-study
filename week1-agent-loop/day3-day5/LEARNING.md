@@ -1,4 +1,4 @@
-# Week 1 Day 3-5 — 工具系统与 Token 管理
+# Week 1 Day 4-5 — 工具系统与 Token 管理
 
 > **核心问题**：Agent 是怎么让 LLM 知道有哪些工具可用的？工具调用的结果怎么回到循环？Token 预算怎么影响循环？
 
@@ -175,7 +175,7 @@ LLM 有上下文窗口限制（如 100K tokens），超过就处理不了。
     └─ 否 ──→ 正常发送
 ```
 
-### 3.3 AutoCompact 压缩策略
+### 3.3 AutoCompact 压缩策略（详见 Day 3）
 
 当消息太长时，Claude Code 会把一段消息压缩成一段摘要：
 
@@ -254,7 +254,7 @@ messages.push(toolResultMessage)
 继续循环 → 发给 LLM → LLM 看到结果 → 做下一步决策
 ```
 
-**关键**：工具结果是作为 `user` 角色的消息加回去的，这样 LLM 就知道"我之前做了什么，结果是什么"。
+**关键**：工具结果是作为 `role: 'user'` 角色的消息加回去的，这样 LLM 就知道"我之前做了什么，结果是什么"。
 
 ---
 
@@ -374,5 +374,4 @@ async def agent_loop(user_message):
 
 Day 6-7：
 - 把 Agent Loop 的各部分串起来
-- 写最小可运行的 Demo 伪代码
 - Week 1 复盘总结
